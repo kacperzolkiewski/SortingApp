@@ -5,44 +5,6 @@ const button = document.querySelector('.sort')
 const ascending = document.getElementById('ascending')
 const descending = document.getElementById('descending')
 
-ascending.addEventListener('click', () => { 
-    if(descending.checked) {
-        descending.checked = false
-    }
-})
-
-descending.addEventListener('click', () => { 
-    if(ascending.checked) {
-        ascending.checked = false
-    }
-})
-
-width.addEventListener('input', (e) => {
-    const columns = document.querySelectorAll('.column')
-    document.querySelector('.width-value').innerHTML = e.target.value
-    columns.forEach((item) => {
-        item.style.width = `${e.target.value}px`
-    })
-})
-
-number.addEventListener('input', (e) => {
-    deleteColumns()
-    document.querySelector('.number-value').innerHTML = e.target.value
-    for(let i = 0; i < e.target.value; i++){
-        container.appendChild(createColumn(i))
-    }
-})
-
-button.addEventListener('click', () => {
-    if(ascending.checked){
-        sortColumns(sortAscending)
-    }else{
-        sortColumns(sortDescending)
-    }
-})
-
-
-
 function createColumn(order){
     const div = document.createElement('div')
     div.classList = 'column'
@@ -129,6 +91,43 @@ function changeColumnsPlace(obj, columns, num, order){
     columns[num].style.order = obj.max.style.order
     obj.max.style.order = order
 }
+
+ascending.addEventListener('click', () => { 
+    if(descending.checked) {
+        descending.checked = false
+    }
+})
+
+descending.addEventListener('click', () => { 
+    if(ascending.checked) {
+        ascending.checked = false
+    }
+})
+
+width.addEventListener('input', (e) => {
+    const columns = document.querySelectorAll('.column')
+    document.querySelector('.width-value').innerHTML = e.target.value
+    columns.forEach((item) => {
+        item.style.width = `${e.target.value}px`
+    })
+})
+
+number.addEventListener('input', (e) => {
+    deleteColumns()
+    document.querySelector('.number-value').innerHTML = e.target.value
+    for(let i = 0; i < e.target.value; i++){
+        container.appendChild(createColumn(i))
+    }
+})
+
+button.addEventListener('click', () => {
+    if(ascending.checked){
+        sortColumns(sortAscending)
+    }else{
+        sortColumns(sortDescending)
+    }
+})
+
 
 
 
